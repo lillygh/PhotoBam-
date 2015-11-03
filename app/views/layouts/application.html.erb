@@ -7,24 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% flash.each do |name, message| %>
-  <div class="flash-message flash-message-<%= name %>">
-    <%= message %>
-  </div>
-<% end %>
-<header class="navbar navbar-default navbar-fixed-top">
+
   <div class="container">
-    <%= link_to "PhotoBam!", '/', id: "logo" %>
-    <div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Profile",   '#' %></li>
-        <li><%= link_to "Log In",   '#' %></li>
-      </ul>
-    </div>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <%end%>
+    <%= yield %>
   </div>
-</header>
+
+  <header class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <%= yield %>
+      <%= link_to "PhotoBam!", '/', id: "logo" %>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Profile",   '#' %></li>
+          <li><%= link_to "Log In",   '#' %></li>
+        </ul>
+      </div>
     </div>
+  </header>
+
 </body>
 </html>
