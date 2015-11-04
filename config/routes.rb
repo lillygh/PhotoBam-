@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+  get 'sessions/new'
+
   get 'sessions/create'
 
   get 'sessions/destroy'
@@ -12,7 +14,10 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
 
-  get '/login' => 'users#login'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+
+  delete '/logout' => 'sessions#destroy'
 
   # root "users#index"
   resources :users, only: [:new, :index, :create, :show]
