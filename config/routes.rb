@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   root 'home_page#home'
 
-  get 'home_page/home'
-
   get '/signup' => 'users#new'
 
-  resources :users, only: [:new, :index, :create, :show, :edit, :update, :destroy]
+  resources :users
+  resources :posts, only: [:create, :destroy]
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

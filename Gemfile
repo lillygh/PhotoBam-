@@ -31,6 +31,12 @@ gem 'bcrypt', '~> 3.1.7'
 #Faker gem to make sample users
 gem 'faker', '~> 1.5'
 
+#carrierwave gem to upload pictures
+gem 'carrierwave'
+
+#mini-magick for image resizing
+gem 'mini_magick'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
