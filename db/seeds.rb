@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#creating sample users with Faker gem
 User.create!(name:  "Lilly G.",
              email: "t@t.com",
              password:              "111111",
              password_confirmation: "111111",
              admin: true)
 
+#creating sample users with Faker gem
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
