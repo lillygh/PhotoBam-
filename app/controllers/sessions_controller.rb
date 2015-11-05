@@ -10,9 +10,7 @@ class SessionsController < ApplicationController
   #determines if the user is valid
   if user && user.authenticate(params[:session][:password])	
   	log_in user
-  	#for the 'remember me' checkbox on login page:
-  	params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-  	redirect_to user	
+    redirect_to user_path(current_user)
   else
   	#error message
   	flash.now[:danger] = 'Invalid email/password'
