@@ -11,3 +11,10 @@ A Ruby on Rails app for photo sharing with these features:
 - sign in/out
 - followers and following
 
+Ruby Gem add-ons:
+bootstrap
+faker
+bcrypt
+carrierwave
+mini_magick
+better_errors
