@@ -12,13 +12,32 @@
     </section>
   </aside>
 
-  <div class="col-md-8">
+  <div class="col-md-4">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.posts.any? %>
       <h3>Posts (<%= @user.posts.count %>)</h3>
       <ol class="posts">
-        <%= render @posts %>
+        <% @user.posts.each do |post| %>
+          <li id="post-<%= post.id %>">
+            <span class="user"><%= link_to post.user.name, post.user %></span>
+            <span class="content">
+              <%= post.content %><br>
+              <%= image_tag post.picture.url if post.picture? %>
+            </span>
+            <span class="timestamp"><br>Posted <%= time_ago_in_words(post.created_at) %> ago.
+            <% if current_user?(post.user)%>
+              <%= link_to "delete", user_post_path(@user, post), method: :delete, data: {confirm: "Are you sure?"} %>
+            <%end%>
+            </span>
+            <% post.comments.each do |comment|%>
+              <br><%=comment.body%>
+              <%=comment.user.name%>
+              <%end%>
+            <%=render 'comments/form', :post => post %>
+          </li>
+        <%end%>
       </ol>
     <% end %>
   </div>
 </div>
+

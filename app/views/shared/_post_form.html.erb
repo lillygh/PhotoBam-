@@ -1,10 +1,10 @@
-<%= form_for(@post, html: {multipart: true}) do |f| %>
+<%= form_for(@post) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "Write your message" %>
+  <div rows="3">
+    	<%= f.text_area :content, class: "form-control", placeholder: "Write your message" %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
-  <span class="picture">
-  	<%= f.file_field :picture %>
-  </span>
+  <div class="form-group">
+  	<%= f.file_field :picture, id: "exampleInputFile" %>
+  </div>
 <% end %>

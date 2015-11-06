@@ -14,6 +14,7 @@ before_action :admin_user, only: :destroy
  def show
   @user = User.find(params[:id])
   @posts = @user.posts
+  @comment = Comment.new
  end
 
  def create
